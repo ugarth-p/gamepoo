@@ -11,11 +11,8 @@ public class ScoreLabel {
     public ScoreLabel(double x, double y) {
         this.score = 0;
         this.scoreLabel = new Label("Score: " + this.score);
-        try {
-            this.scoreLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 56));
-        } catch (Exception e) {
-            this.scoreLabel.setFont(Font.font("Verdana", 40));
-        }
+        Font f = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 56);
+        this.scoreLabel.setFont(f != null ? f : Font.font("Verdana", 56));
         this.scoreLabel.setTextFill(Color.AQUA);
         this.scoreLabel.setLayoutX(x);
         this.scoreLabel.setLayoutY(y);

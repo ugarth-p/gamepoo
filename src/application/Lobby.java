@@ -38,11 +38,8 @@ public class Lobby {
         Text title = new Text("SELECT GAME MODE");
         title.setLayoutX(310);
         title.setLayoutY(100);
-        try {
-            title.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 50));
-        } catch (Exception e) {
-            title.setFont(Font.font("Verdana", 40));
-        }
+        Font titleFont = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 50);
+        title.setFont(titleFont != null ? titleFont : Font.font("Verdana", 50));
         title.setStyle("-fx-fill: #333a51;");
 
         // Turn-Based button
@@ -92,21 +89,15 @@ public class Lobby {
         Text turnBasedDesc = new Text("Classic combat:\nClick to attack");
         turnBasedDesc.setLayoutX(260);
         turnBasedDesc.setLayoutY(360);
-        try {
-            turnBasedDesc.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 14));
-        } catch (Exception e) {
-            turnBasedDesc.setFont(Font.font("Verdana", 12));
-        }
+        Font descFont = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 14);
+        turnBasedDesc.setFont(descFont != null ? descFont : Font.font("Verdana", 14));
         turnBasedDesc.setStyle("-fx-fill: white;");
 
         Text realTimeDesc = new Text("Action combat:\nMove and fight in real-time");
         realTimeDesc.setLayoutX(555);
         realTimeDesc.setLayoutY(360);
-        try {
-            realTimeDesc.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 14));
-        } catch (Exception e) {
-            realTimeDesc.setFont(Font.font("Verdana", 12));
-        }
+        Font rtDescFont = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 14);
+        realTimeDesc.setFont(rtDescFont != null ? rtDescFont : Font.font("Verdana", 14));
         realTimeDesc.setStyle("-fx-fill: white;");
 
         root.getChildren().addAll(bgView, title, turnBasedButton, realTimeButton, exitButton, turnBasedDesc, realTimeDesc);

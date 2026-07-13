@@ -63,6 +63,19 @@ public class TurnBasedGame {
         });
         addHoverEffect(quitButton);
 
+        Button backToLobbyButton = new Button("Back to Lobby");
+        backToLobbyButton.setLayoutX(440);
+        backToLobbyButton.setLayoutY(440);
+        backToLobbyButton.setPrefWidth(140);
+        backToLobbyButton.setPrefHeight(50);
+        backToLobbyButton.setFont(Font.font("Verdana", 18));
+        backToLobbyButton.setStyle("-fx-font-size: 14px; -fx-background-color: #757575; -fx-text-fill: white;");
+        backToLobbyButton.setOnAction(e -> {
+            Lobby lobby = new Lobby(stage);
+            lobby.start();
+        });
+        addHoverEffect(backToLobbyButton);
+
         Image imagesrc = new Image("/wallpaper.jpg");
         ImageView image = new ImageView(imagesrc);
         image.setX(0);
@@ -70,7 +83,7 @@ public class TurnBasedGame {
         image.setFitWidth(1024);
         image.setFitHeight(575);
 
-        root.getChildren().addAll(image, playButton, quitButton);
+        root.getChildren().addAll(image, playButton, quitButton, backToLobbyButton);
 
         Scene menuScene = new Scene(root, 1024, 575);
         stage.setScene(menuScene);

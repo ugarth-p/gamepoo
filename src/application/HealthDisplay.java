@@ -13,11 +13,8 @@ public class HealthDisplay {
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         this.healthLabel = new Label(characterName + " HP: " + currentHealth + "/" + maxHealth);
-        try {
-            this.healthLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 30));
-        } catch (Exception e) {
-            this.healthLabel.setFont(Font.font("Verdana", 20));
-        }
+        Font f = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 30);
+        this.healthLabel.setFont(f != null ? f : Font.font("Verdana", 30));
         this.healthLabel.setTextFill(Color.LAWNGREEN);
         this.healthLabel.setLayoutX(x);
         this.healthLabel.setLayoutY(y);

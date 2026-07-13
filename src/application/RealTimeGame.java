@@ -61,20 +61,14 @@ public class RealTimeGame {
 
         winnerNameLabel.setLayoutX(180);
         winnerNameLabel.setLayoutY(-200);
-        try {
-            winnerNameLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 150));
-        } catch (Exception e) {
-            winnerNameLabel.setFont(Font.font("Verdana", 120));
-        }
+        Font wf = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 150);
+        winnerNameLabel.setFont(wf != null ? wf : Font.font("Verdana", 150));
         winnerNameLabel.setTextFill(Color.RED);
 
         winnerText.setLayoutX(180);
         winnerText.setLayoutY(-200);
-        try {
-            winnerText.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 150));
-        } catch (Exception e) {
-            winnerText.setFont(Font.font("Verdana", 120));
-        }
+        Font wtf = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 150);
+        winnerText.setFont(wtf != null ? wtf : Font.font("Verdana", 150));
         winnerText.setTextFill(Color.RED);
 
         mainRoot = root;
@@ -82,13 +76,9 @@ public class RealTimeGame {
         roundNbr.setLayoutX(525);
 
         root.getChildren().addAll(roundNbr, roundName);
-        try {
-            roundName.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 100));
-            roundNbr.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 100));
-        } catch (Exception e) {
-            roundName.setFont(Font.font("Verdana", 80));
-            roundNbr.setFont(Font.font("Verdana", 80));
-        }
+        Font rnFont = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 100);
+        roundName.setFont(rnFont != null ? rnFont : Font.font("Verdana", 100));
+        roundNbr.setFont(rnFont != null ? rnFont : Font.font("Verdana", 100));
 
         this.rounds = rounds;
         this.currentRound = 1;
@@ -202,11 +192,8 @@ public class RealTimeGame {
         menuBackground.setPrefSize(320, 250);
 
         Text title = new Text("PAUSE");
-        try {
-            title.setFont(Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 56));
-        } catch (Exception e) {
-            title.setFont(Font.font("Verdana", 50));
-        }
+        Font pauseFont = Font.loadFont(getClass().getResourceAsStream("/application/font2.ttf"), 56);
+        title.setFont(pauseFont != null ? pauseFont : Font.font("Verdana", 56));
         title.setFill(Color.WHITE);
 
         Button homeButton = new Button("Home");
