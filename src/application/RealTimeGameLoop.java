@@ -62,7 +62,7 @@ public class RealTimeGameLoop {
         while (iterator1.hasNext()) {
             FireBall fireball = iterator1.next();
             if (fireball.checkCollisionWithOpponent(player2.getImageView())) {
-                handleCollision(fireball, player2.getHealthDisplay());
+                handleCollision(fireball, player2.getHealthDisplay(), "Mage");
                 iterator1.remove();
             }
             if (fireball.isOffScreen()) {
@@ -76,7 +76,7 @@ public class RealTimeGameLoop {
         while (iterator2.hasNext()) {
             FireBall fireball = iterator2.next();
             if (fireball.checkCollisionWithOpponent(player1.getImageView())) {
-                handleCollision(fireball, player1.getHealthDisplay());
+                handleCollision(fireball, player1.getHealthDisplay(), "Warrior");
                 iterator2.remove();
             }
             if (fireball.isOffScreen()) {
@@ -90,10 +90,10 @@ public class RealTimeGameLoop {
         while (iterator3.hasNext()) {
             FireBall fireball = iterator3.next();
             if (fireball.checkCollisionWithOpponent(player1.getImageView())) {
-                handleCollision(fireball, player1.getHealthDisplay());
+                handleCollision(fireball, player1.getHealthDisplay(), "Robber");
                 iterator3.remove();
             } else if (fireball.checkCollisionWithOpponent(player2.getImageView())) {
-                handleCollision(fireball, player2.getHealthDisplay());
+                handleCollision(fireball, player2.getHealthDisplay(), "Robber");
                 iterator3.remove();
             }
             if (fireball.isOffScreen()) {
@@ -120,14 +120,14 @@ public class RealTimeGameLoop {
         });
     }
 
-    private void handleCollision(FireBall fireball, HealthDisplay targetHealth) {
+    private void handleCollision(FireBall fireball, HealthDisplay targetHealth, String attackerName) {
         root.getChildren().remove(fireball.getImageView());
-        if (!targetHealth.isDead()) {
+        if (targetHealth.getCurrentHealth() > 0) {
             targetHealth.reduceHealth();
-        } else {
+        }
+        if (targetHealth.isDead()) {
             targetHealth.setToFull();
-            String winnerName = fireball.getImageView().getLayoutX() < 500 ? "Warrior" : "Mage";
-            game.addRounds(winnerName);
+            game.addRounds(attackerName);
         }
     }
 

@@ -34,9 +34,9 @@ public class Main extends Application {
 
             root.getChildren().add(backgroundImageView);
 
-            RealTimeGame game = new RealTimeGame(root, 5, primaryStage, null);
-
             Scene scene = new Scene(root, 1050, 530);
+
+            RealTimeGame game = new RealTimeGame(root, 5, primaryStage, null);
 
             primaryStage.setTitle("Real-Time Battle");
             primaryStage.setResizable(false);

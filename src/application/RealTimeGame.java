@@ -49,11 +49,9 @@ public class RealTimeGame {
     int allRounds;
 
     private Stage primaryStage;
-    private Scene lobby;
 
     public RealTimeGame(Pane root, int rounds, Stage primaryStage, Scene lobby) {
         this.primaryStage = primaryStage;
-        this.lobby = lobby;
         allRounds = rounds;
 
         this.pauseMenu = createPauseMenuPane();
@@ -215,7 +213,8 @@ public class RealTimeGame {
         homeButton.setStyle("-fx-background-color: #FF5252; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px;");
         homeButton.setOnAction(e -> {
             restartGame();
-            this.primaryStage.setScene(lobby);
+            Lobby newLobby = new Lobby(this.primaryStage);
+            newLobby.start();
         });
 
         Button playButton = new Button("Resume");
