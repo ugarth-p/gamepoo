@@ -109,6 +109,7 @@ public class Lobby {
     }
 
     private void addHoverEffect(Button button) {
+        button.setFocusTraversable(false);
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), button);
         scaleTransition.setByX(0.1);
         scaleTransition.setByY(0.1);

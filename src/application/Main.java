@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 public class Main extends Application {
@@ -36,6 +38,8 @@ public class Main extends Application {
 
             Scene scene = new Scene(root, 1050, 530);
 
+            root.setFocusTraversable(false);
+
             RealTimeGame game = new RealTimeGame(root, 5, primaryStage, null);
 
             primaryStage.setTitle("Real-Time Battle");
@@ -54,6 +58,21 @@ public class Main extends Application {
             RealTimeGameLoop gameLoop = new RealTimeGameLoop(player1, player2, root, robber, game);
             gameLoop.start();
             game.setGameLoop(gameLoop);
+
+            scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+                if (e.getCode() == KeyCode.SPACE) {
+                    e.consume();
+                    return;
+                }
+                if (e.getCode() == KeyCode.UP || e.getCode() == KeyCode.DOWN
+                        || e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT
+                        || e.getCode() == KeyCode.TAB) {
+                    player1.onKeyPressed(e);
+                    player2.onKeyPressed(e);
+                    game.onKeyPressed(e, gameLoop);
+                    e.consume();
+                }
+            });
 
             scene.setOnKeyPressed(e -> {
                 player1.onKeyPressed(e);

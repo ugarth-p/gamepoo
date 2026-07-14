@@ -87,15 +87,15 @@ public class RealTimeMage extends Character implements Attackable {
             this.imgView.setFitHeight(100);
         }
 
-        if (event.getCode() == KeyCode.Q) movingLeft = true;
+        if (event.getCode() == KeyCode.A) movingLeft = true;
         if (event.getCode() == KeyCode.D) movingRight = true;
 
-        if (event.getCode() == KeyCode.Z && onGround) {
+        if (event.getCode() == KeyCode.W && onGround) {
             velocityY = -350;
             onGround = false;
         }
 
-        if (event.getCode() == KeyCode.SPACE && !shifting) {
+        if (event.getCode() == KeyCode.TAB && !shifting) {
             throwFireball();
         }
     }
@@ -106,7 +106,7 @@ public class RealTimeMage extends Character implements Attackable {
             this.imgView.setFitHeight(150);
         }
 
-        if (event.getCode() == KeyCode.Q) movingLeft = false;
+        if (event.getCode() == KeyCode.A) movingLeft = false;
         if (event.getCode() == KeyCode.D) movingRight = false;
     }
 

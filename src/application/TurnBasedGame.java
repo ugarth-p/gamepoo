@@ -153,7 +153,19 @@ public class TurnBasedGame {
         });
         addHoverEffect(thiefButton);
 
-        root.getChildren().addAll(selectScene, knightImage, mageImage, assasinImage, warriorButton, mageButton, thiefButton);
+        Button backToLobbyButton = new Button("Back");
+        backToLobbyButton.setLayoutX(10);
+        backToLobbyButton.setLayoutY(10);
+        backToLobbyButton.setPrefWidth(80);
+        backToLobbyButton.setPrefHeight(40);
+        backToLobbyButton.setStyle("-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14px;");
+        backToLobbyButton.setOnAction(e -> {
+            Lobby lobby = new Lobby(stage);
+            lobby.start();
+        });
+        addHoverEffect(backToLobbyButton);
+
+        root.getChildren().addAll(selectScene, knightImage, mageImage, assasinImage, warriorButton, mageButton, thiefButton, backToLobbyButton);
 
         Scene characterSelectionScene = new Scene(root, 728, 409);
         stage.setScene(characterSelectionScene);
@@ -381,6 +393,7 @@ public class TurnBasedGame {
     }
 
     private void addHoverEffect(Button button) {
+        button.setFocusTraversable(false);
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), button);
         scaleTransition.setByX(0.1);
         scaleTransition.setByY(0.1);

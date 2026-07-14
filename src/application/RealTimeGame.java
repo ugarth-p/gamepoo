@@ -84,6 +84,21 @@ public class RealTimeGame {
         this.currentRound = 1;
 
         root.getChildren().addAll(winnerNameLabel, winnerText, pauseMenu);
+
+        Button returnToLobbyButton = new Button("Return to Lobby");
+        returnToLobbyButton.setLayoutX(10);
+        returnToLobbyButton.setLayoutY(10);
+        returnToLobbyButton.setPrefWidth(120);
+        returnToLobbyButton.setPrefHeight(30);
+        returnToLobbyButton.setStyle("-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 12px;");
+        returnToLobbyButton.setOnAction(e -> {
+            if (gameLoop != null) {
+                gameLoop.stop();
+            }
+            Lobby newLobby = new Lobby(this.primaryStage);
+            newLobby.start();
+        });
+        root.getChildren().add(returnToLobbyButton);
     }
 
     public void setGameLoop(RealTimeGameLoop gameLoop) {
@@ -93,8 +108,9 @@ public class RealTimeGame {
     public void onKeyPressed(KeyEvent event, RealTimeGameLoop gameLoop) {
         if (event.getCode() == KeyCode.ESCAPE) {
             if (pauseMenu.isVisible()) {
-                hidePausePanel();
-                gameLoop.start();
+                gameLoop.stop();
+                Lobby newLobby = new Lobby(this.primaryStage);
+                newLobby.start();
             } else {
                 showPausePanel();
                 gameLoop.stop();
