@@ -37,6 +37,7 @@ public class RealTimeWarrior extends Character implements Attackable {
         this.imgView.setLayoutY(y);
         this.imgView.setFitHeight(150);
         this.imgView.setFitWidth(75);
+        this.imgView.setScaleX(-1);
         this.speed = speed;
         this.health = 10;
 
