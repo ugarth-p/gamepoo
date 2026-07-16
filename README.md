@@ -7,23 +7,6 @@ A local multiplayer game built with JavaFX featuring two game modes: **Turn-Base
 - **Java 11+** (tested with OpenJDK 25)
 - **JavaFX SDK 25** (download from [gluonhq.com](https://gluonhq.com/products/javafx/))
 
-## How to Compile & Run
-
-```bash
-# Compile
-cd ~/Desktop/programation/MergedGame
-rm -rf bin && mkdir bin
-javac --module-path ~/javafx-sdk/javafx-sdk-25.0.3/lib \
-      --add-modules javafx.controls,javafx.graphics \
-      -d bin $(find src -name "*.java")
-cp src/*.jpg src/*.gif bin/
-
-# Run
-java --module-path ~/javafx-sdk/javafx-sdk-25.0.3/lib:bin \
-     --add-modules javafx.controls,javafx.graphics \
-     -m Game/application.Main
-```
-
 ## Game Modes
 
 ### Turn-Based
