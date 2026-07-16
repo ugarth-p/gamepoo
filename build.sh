@@ -27,11 +27,11 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Copying assets..."
-cp "$SCRIPT_DIR/src"/*.gif "$SCRIPT_DIR/src"/*.jpg "$SCRIPT_DIR/build/classes/"
+cp -r "$SCRIPT_DIR/src/main/resources"/* "$SCRIPT_DIR/build/classes/"
 
 echo "Creating modular JAR..."
 jar --create --file "$SCRIPT_DIR/build/MergedGame.jar" \
-    --main-class application.Main \
+    --main-class com.gamepoo.launcher.GameLauncher \
     -C "$SCRIPT_DIR/build/classes" .
 
 if [ $? -ne 0 ]; then
@@ -42,7 +42,7 @@ fi
 echo "Creating app image with jpackage..."
 jpackage --input "$SCRIPT_DIR/build" \
          --module-path "$JAVAFX_PATH" \
-         --module Game/application.Main \
+         --module Game/com.gamepoo.launcher.GameLauncher \
          --name MergedGame \
          --type app-image \
          --dest "$SCRIPT_DIR/build/output" \
