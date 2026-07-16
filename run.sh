@@ -23,9 +23,9 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Copying assets..."
-cp "$SCRIPT_DIR/src"/*.jpg "$SCRIPT_DIR/src"/*.gif "$SCRIPT_DIR/bin/" 2>/dev/null
+cp -r "$SCRIPT_DIR/src/main/resources"/* "$SCRIPT_DIR/bin/"
 
 echo "Launching MergedGame..."
 java --module-path "$JAVAFX_PATH:$SCRIPT_DIR/bin" \
      --add-modules javafx.controls,javafx.graphics \
-     -m Game/application.Main
+     -m Game/com.gamepoo.launcher.GameLauncher
