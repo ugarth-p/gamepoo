@@ -2,29 +2,9 @@
 setlocal
 
 set "SCRIPT_DIR=%~dp0"
-set "JAVAFX_PATH="
+call "%SCRIPT_DIR%setup_env.bat"
+if %errorlevel% neq 0 exit /b 1
 
-for %%D in (
-    "C:\javafx-sdk"
-    "%USERPROFILE%\javafx-sdk"
-    "%USERPROFILE%\Desktop\javafx-sdk"
-    "%SCRIPT_DIR%javafx-sdk"
-) do (
-    for /d %%P in ("%%~D\*") do (
-        if exist "%%~P\lib" (
-            set "JAVAFX_PATH=%%~P\lib"
-            goto :found
-        )
-    )
-)
-
-echo ERROR: JavaFX SDK not found.
-echo Download from https://gluonhq.com/products/javafx/
-echo Extract to C:\javafx-sdk\ or %USERPROFILE%\javafx-sdk\
-pause
-exit /b 1
-
-:found
 echo === MergedGame Windows Build ===
 
 echo Cleaning build directory...
