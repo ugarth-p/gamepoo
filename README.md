@@ -1,4 +1,5 @@
-# ⚔️ GamePoo
+# ⚔️PixelDuel
+
 
 > **Two Modes. One Keyboard. Infinite Chaos.**
 
