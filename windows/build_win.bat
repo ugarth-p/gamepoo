@@ -1,7 +1,10 @@
 @echo off
 setlocal
 
-set "SCRIPT_DIR=%~dp0"
+set "SCRIPT_DIR=%~dp0.."
+pushd "%SCRIPT_DIR%"
+set "SCRIPT_DIR=%CD%"
+popd
 call "%SCRIPT_DIR%setup_env.bat"
 if %errorlevel% neq 0 exit /b 1
 

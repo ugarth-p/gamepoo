@@ -498,87 +498,55 @@ classDiagram
 
 ```
 GamePoo/
+├── README.md
 ├── pom.xml                              # Maven build configuration
-├── build.sh                             # Linux manual build script
-├── run.sh                               # Linux manual run script
+├── .gitignore
 │
-├── src/
+├── src/                                 # Source code
 │   ├── module-info.java                 # Java module descriptor
 │   │
-│   ├── main/
-│   │   ├── java/com/gamepoo/
-│   │   │   │
-│   │   │   ├── launcher/
-│   │   │   │   └── GameLauncher.java    # Application entry point (extends Application)
-│   │   │   │
-│   │   │   ├── scene/
-│   │   │   │   ├── SceneManager.java    # Centralized Stage/scene lifecycle
-│   │   │   │   ├── Lobby.java           # Main menu screen
-│   │   │   │   ├── RealTimeGameScene.java  # Real-time battle scene
-│   │   │   │   └── TurnBasedGameScene.java # Turn-based battle scene
-│   │   │   │
-│   │   │   ├── core/
-│   │   │   │   ├── GameLoop.java        # Fixed-timestep AnimationTimer loop
-│   │   │   │   └── GameState.java       # Game state enum
-│   │   │   │
-│   │   │   ├── model/
-│   │   │   │   ├── Attackable.java      # Attack interface
-│   │   │   │   ├── Character.java       # Abstract base character
-│   │   │   │   ├── RealTimePlayer.java  # Real-time player entity
-│   │   │   │   ├── TurnBasedWarrior.java
-│   │   │   │   ├── TurnBasedMage.java
-│   │   │   │   ├── TurnBasedThief.java
-│   │   │   │   ├── Robber.java          # NPC that ambushes players
-│   │   │   │   └── Projectile.java      # Fireball projectile entity
-│   │   │   │
-│   │   │   ├── component/
-│   │   │   │   ├── HealthComponent.java # Composable health tracking
-│   │   │   │   └── PhysicsComponent.java# Composable physics (gravity, velocity)
-│   │   │   │
-│   │   │   ├── ui/
-│   │   │   │   ├── HealthDisplay.java   # HP label with color feedback
-│   │   │   │   └── ScoreDisplay.java    # Score label display
-│   │   │   │
-│   │   │   ├── assets/
-│   │   │   │   └── AssetManager.java    # Image/font cache with fallback
-│   │   │   │
-│   │   │   ├── audio/
-│   │   │   │   └── AudioManager.java    # Sound playback with volume control
-│   │   │   │
-│   │   │   ├── save/
-│   │   │   │   └── SaveManager.java     # Settings persistence (~/.gamepoo/)
-│   │   │   │
-│   │   │   ├── config/
-│   │   │   │   └── Constants.java       # All magic numbers in one place
-│   │   │   │
-│   │   │   ├── event/
-│   │   │   │   ├── GameEventBus.java    # Typed pub/sub event system
-│   │   │   │   ├── CollisionEvent.java
-│   │   │   │   ├── ScoreEvent.java
-│   │   │   │   └── DamageEvent.java
-│   │   │   │
-│   │   │   ├── input/                   # (planned) InputManager, KeyBinding
-│   │   │   ├── physics/                 # (planned) CollisionSystem
-│   │   │   ├── render/                  # (planned) Renderer, Camera
-│   │   │   ├── game/                    # (planned) GameRules, RoundManager
-│   │   │   └── ai/                      # (planned) AIStrategy, SimpleAttackAI
-│   │   │
-│   │   └── resources/
-│   │       ├── images/                  # GIF sprites, JPG backgrounds
-│   │       │   ├── witch.gif
-│   │       │   ├── soul_knight.gif
-│   │       │   ├── assasin.gif
-│   │       │   ├── fire-fireball.gif
-│   │       │   ├── playing_scene2.jpg
-│   │       │   ├── wallpaper.jpg
-│   │       │   └── pixel-art-mountains-....jpg
-│   │       │
-│   │       ├── fonts/                   # (place font2.ttf here)
-│   │       └── audio/                   # (place .wav/.mp3 files here)
+│   ├── main/java/com/gamepoo/
+│   │   ├── launcher/
+│   │   │   └── GameLauncher.java        # Application entry point
+│   │   ├── scene/
+│   │   │   ├── SceneManager.java
+│   │   │   ├── Lobby.java
+│   │   │   ├── RealTimeGameScene.java
+│   │   │   └── TurnBasedGameScene.java
+│   │   ├── core/
+│   │   │   ├── GameLoop.java
+│   │   │   └── GameState.java
+│   │   ├── model/
+│   │   │   ├── Attackable.java
+│   │   │   ├── Character.java
+│   │   │   ├── RealTimePlayer.java
+│   │   │   ├── TurnBasedWarrior.java
+│   │   │   ├── TurnBasedMage.java
+│   │   │   ├── TurnBasedThief.java
+│   │   │   ├── Robber.java
+│   │   │   └── Projectile.java
+│   │   ├── component/
+│   │   │   ├── HealthComponent.java
+│   │   │   └── PhysicsComponent.java
+│   │   ├── ui/
+│   │   │   ├── HealthDisplay.java
+│   │   │   └── ScoreDisplay.java
+│   │   ├── assets/
+│   │   │   └── AssetManager.java
+│   │   ├── audio/
+│   │   │   └── AudioManager.java
+│   │   ├── save/
+│   │   │   └── SaveManager.java
+│   │   ├── config/
+│   │   │   └── Constants.java
+│   │   └── event/
+│   │       ├── GameEventBus.java
+│   │       ├── CollisionEvent.java
+│   │       ├── ScoreEvent.java
+│   │       └── DamageEvent.java
 │   │
 │   └── test/java/com/gamepoo/
-│       ├── config/
-│       │   └── ConstantsTest.java
+│       ├── config/ConstantsTest.java
 │       ├── component/
 │       │   ├── HealthComponentTest.java
 │       │   └── PhysicsComponentTest.java
@@ -586,15 +554,24 @@ GamePoo/
 │           ├── CharacterTest.java
 │           └── ProjectileTest.java
 │
-├── screenshots/                         # (add screenshots here)
-├── docs/                                # Extended documentation
-│   ├── Architecture.md
-│   ├── DeveloperGuide.md
-│   ├── GameLoop.md
-│   └── AssetPipeline.md
+├── linux/                               # Linux build & run scripts
+│   ├── build_lin.sh                     # Build native app image
+│   ├── run_lin.sh                       # Compile & run directly
+│   └── setup_env.sh                     # Auto-install Java & JavaFX
 │
-├── .gitignore
-└── README.md
+├── windows/                             # Windows build & run scripts
+│   ├── build_win.bat                    # Build native app image
+│   ├── run_win.bat                      # Compile & run directly
+│   └── setup_env.bat                    # Auto-install Java & JavaFX
+│
+└── docs/                                # Documentation
+    ├── Architecture.md
+    ├── AssetPipeline.md
+    ├── ClassDiagram.md
+    ├── DeveloperGuide.md
+    ├── FolderStructure.md
+    ├── GameLoop.md
+    └── RefactoringPlan.md
 ```
 
 ---
@@ -765,11 +742,24 @@ java -jar target/gamepoo-1.0.0.jar
 
 ### Build & Run (Manual — No Maven)
 
+**Linux:**
 ```bash
-# Ensure JavaFX SDK 21+ is downloaded to ~/javafx-sdk/
-./build.sh   # Compiles + packages + creates app image
-./run.sh     # Compiles + runs directly
+cd gamepoo
+git checkout dev1
+chmod +x linux/build_lin.sh
+./linux/build_lin.sh   # Compiles + packages + creates app image
+./linux/run_lin.sh     # Compiles + runs directly
 ```
+
+**Windows:**
+```cmd
+cd gamepoo
+git checkout dev1
+windows\build_win.bat
+windows\run_win.bat
+```
+
+> Java and JavaFX are auto-installed if not present — no manual setup needed.
 
 ---
 
@@ -799,7 +789,10 @@ java -jar target/gamepoo-1.0.0.jar
 
 ```bash
 # Linux app image
-./build.sh   # Uses jpackage internally
+./linux/build_lin.sh   # Uses jpackage internally
+
+# Windows app image
+windows\build_win.bat  # Uses jpackage internally
 
 # With Maven (requires configured jlink/jpackage plugin)
 mvn clean package
@@ -810,7 +803,7 @@ jpackage --input target/ \
          --type app-image
 ```
 
-> **Note:** The shell script `build.sh` bundles JavaFX modules automatically via `jpackage`. No separate JavaFX installation is needed for end users.
+> **Note:** The shell scripts (`linux/build_lin.sh`, `windows\build_win.bat`) bundle JavaFX modules automatically via `jpackage`. No separate JavaFX installation is needed for end users.
 
 ---
 
@@ -818,16 +811,24 @@ jpackage --input target/ \
 
 | Platform | Method | Details |
 |----------|--------|---------|
-| 🐧 **Linux** | Native app image (`build.sh`) | Bundles Java runtime + JavaFX via `jpackage` |
+| 🐧 **Linux** | Native app image (`linux/build_lin.sh`) | Bundles Java runtime + JavaFX via `jpackage` |
+| 🪟 **Windows** | Native app image (`windows\build_win.bat`) | Bundles Java runtime + JavaFX via `jpackage` |
 | 🪟 **Windows** | Executable JAR | Run with `java -jar` (requires Java 21 + JavaFX) |
 | 🍎 **macOS** | Executable JAR | Run with `java -jar` (requires Java 21 + JavaFX) |
 
 ### For End Users (No Java Installation Needed)
 
-**Linux only** (via `build.sh`):
-1. Run `./build.sh`
+**Linux:**
+1. Run `./linux/build_lin.sh`
 2. Distribute `build/output/GamePoo/` as a portable app
 3. Users run `GamePoo/bin/GamePoo`
+
+**Windows:**
+1. Run `windows\build_win.bat`
+2. Distribute `build\output\MergedGame\` as a portable app
+3. Users run `MergedGame\bin\MergedGame.exe`
+
+> Java and JavaFX are auto-installed if not present — no manual setup needed.
 
 **Other platforms:** Use `jpackage` with a bundled JRE.
 
@@ -1062,7 +1063,7 @@ JavaFX provides a mature scene graph API, built-in animation support, and seamle
 
 <details>
 <summary><strong>How do I run the game?</strong></summary>
-The easiest way is `mvn javafx:run` if you have Maven installed. Alternatively, `./run.sh` works with a manually downloaded JavaFX SDK. See the [Installation](#installation) section.
+The easiest way is `mvn javafx:run` if you have Maven installed. Alternatively, `./linux/run_lin.sh` (Linux) or `windows\run_win.bat` (Windows) auto-install Java and JavaFX if needed. See the [Installation](#installation) section.
 </details>
 
 <details>
@@ -1142,7 +1143,7 @@ Yes! Implement the `AIStrategy` interface (planned) and plug it into `TurnBasedG
 
 <details>
 <summary><strong>How do I build a distributable package?</strong></summary>
-Run `./build.sh` on Linux to create a native app image with bundled Java and JavaFX. For other platforms, use `jpackage` directly or distribute the executable JAR.
+Run `./linux/build_lin.sh` (Linux) or `windows\build_win.bat` (Windows) to create a native app image with bundled Java and JavaFX. For other platforms, use `jpackage` directly or distribute the executable JAR.
 </details>
 
 <details>
