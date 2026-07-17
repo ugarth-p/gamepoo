@@ -670,8 +670,6 @@ boolean checkCollisionWithOpponent(ImageView opponent) {
 
 ---
 
-## User Interface
-
 ### Main Menu
 
 Two-button layout with a background wallpaper:
@@ -890,90 +888,6 @@ audio.muted=false
 window.width=1050
 window.height=530
 ```
-
----
-
-## Roadmap
-
-### Version 0.1 — Foundation ✅
-
-- [x] Project structure with Clean Architecture
-- [x] Component-based entity design
-- [x] Fixed-timestep game loop
-- [x] Asset caching system
-- [x] Event bus for decoupled communication
-- [x] Audio system ready for assets
-- [x] Save/load for settings
-- [x] Maven build with automatic JavaFX
-
-### Version 0.5 — Enhancement 🚧
-
-- [ ] Dedicated `InputManager` with rebindable keys
-- [ ] `CollisionSystem` with spatial partitioning
-- [ ] AI Strategy pattern (multiple enemy behaviors)
-- [ ] CSS styling (replace inline styles)
-- [ ] Observable properties for automatic UI updates
-- [ ] Loading screen for scene transitions
-- [ ] Sound effects for combat actions
-- [ ] Player-vs-player collision (body blocking)
-
-### Version 1.0 — Release 🎯
-
-- [ ] Level system (multiple arenas)
-- [ ] More characters with unique mechanics
-- [ ] Boss battles in turn-based mode
-- [ ] Particle effects (fireball trails, hit sparks)
-- [ ] Fullscreen mode
-- [ ] Keyboard navigation for menus
-- [ ] Accessibility features (high contrast, screen reader)
-- [ ] Performance profiling and optimization
-
-### Future 🌟
-
-- [ ] Online multiplayer
-- [ ] Steam integration
-- [ ] Controller support
-- [ ] Modding API
-- [ ] Replay system
-- [ ] Achievement system
-- [ ] Localization (i18n)
-- [ ] Custom level editor
-
----
-
-## Upcoming Features
-
-<details>
-<summary>Click to expand the full feature roadmap</summary>
-
-### Game Content
-
-- [ ] **New Levels** — Multiple arenas with different backgrounds and layouts
-- [ ] **More Enemies** — Additional AI types with unique attack patterns
-- [ ] **Boss Battles** — Turn-based boss encounters with special mechanics
-- [ ] **Skill Tree** — Unlockable abilities and stat upgrades
-- [ ] **More Weapons** — Melee, ranged, and magical weapon types
-- [ ] **Power-ups** — Temporary buffs that spawn during real-time matches
-- [ ] **Custom Levels** — Community-created arenas
-
-### Technical
-
-- [ ] **Multiplayer** — Online matchmaking and lobbies
-- [ ] **Controller Support** — Gamepad input via JavaFX events
-- [ ] **Modding Support** — Scriptable characters and behaviors
-- [ ] **Cloud Saves** — Synchronize settings across devices
-- [ ] **Replay System** — Record and playback matches
-- [ ] **Achievements** — Unlockable milestones with notifications
-
-### Quality of Life
-
-- [ ] **Better AI** — Pathfinding, threat assessment, cooperative tactics
-- [ ] **More Animations** — Idle, hit, death, victory animations
-- [ ] **Better Audio** — Background music, positional audio
-- [ ] **More Maps** — Themed environments with interactive elements
-- [ ] **Localization** — English, French, Spanish, German, Japanese
-</details>
-
 ---
 
 ## Documentation
@@ -993,22 +907,6 @@ window.height=530
 
 ---
 
-## Contributing
-
-We welcome contributions! Here's how to get started:
-
-### Getting Started
-
-1. **Fork** the repository on GitHub
-2. **Clone** your fork:
-   ```bash
-   git clone https://github.com/your-username/gamepoo.git
-   cd gamepoo
-   ```
-3. **Create a branch**:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
 
 ### Coding Standards
 
@@ -1052,110 +950,6 @@ test: add HealthComponent edge case tests
 3. Update documentation if needed
 4. Create PR against `develop` branch
 5. Describe the change and motivation
-
----
-
-## FAQ
-
-<details>
-<summary><strong>Why JavaFX over other game frameworks?</strong></summary>
-JavaFX provides a mature scene graph API, built-in animation support, and seamless integration with Java. It's an excellent choice for learning game architecture without the complexity of engines like LibGDX or Unity. The goal was to demonstrate professional-grade software engineering within a pure Java ecosystem.
-</details>
-
-<details>
-<summary><strong>How do I run the game?</strong></summary>
-The easiest way is `mvn javafx:run` if you have Maven installed. Alternatively, `./linux/run_lin.sh` (Linux) or `windows\run_win.bat` (Windows) auto-install Java and JavaFX if needed. See the [Installation](#installation) section.
-</details>
-
-<details>
-<summary><strong>Can I contribute if I'm a beginner?</strong></summary>
-Absolutely! The project is designed to be educational. Check the [Contributing](#contributing) guide and look for `good-first-issue` labels on GitHub.
-</details>
-
-<details>
-<summary><strong>How do I add a new character?</strong></summary>
-For turn-based: create a class extending `Character` in the `model` package, implement `attack()` and `useSpecialAbility()`, then add it to `TurnBasedGameScene`. For real-time: just create a new `RealTimePlayer` with different parameters — no new class needed.
-</details>
-
-<details>
-<summary><strong>How do I add a new level or arena?</strong></summary>
-Currently the game uses static backgrounds. A level system is planned for v0.5. For now, you can replace the background images in `src/main/resources/images/`.
-</details>
-
-<details>
-<summary><strong>Can I use my own sprites?</strong></summary>
-Yes! Place your .gif or .png files in `src/main/resources/images/` and reference them via `AssetManager.getImage("/images/your-sprite.gif")`. Ensure dimensions are consistent with the game's expectations.
-</details>
-
-<details>
-<summary><strong>Does it support controllers?</strong></summary>
-Not yet. Controller support is on the roadmap for a future release.
-</details>
-
-<details>
-<summary><strong>Will online multiplayer be added?</strong></summary>
-It's a long-term goal. The architecture is designed with networking in mind (decoupled systems, event bus, entity-component model), but no timeline is set.
-</details>
-
-<details>
-<summary><strong>Why Maven and not Gradle?</strong></summary>
-Maven was chosen for its simplicity, standardized project layout, and widespread adoption in enterprise Java. A Gradle build can be added if there's community demand.
-</details>
-
-<details>
-<summary><strong>How do I run on Windows or macOS?</strong></summary>
-Use `mvn javafx:run` across all platforms. For native packaging, Windows/macOS support via `jpackage` is planned.
-</details>
-
-<details>
-<summary><strong>Does the game have sound?</strong></summary>
-The audio system (`AudioManager`) is fully implemented and ready. You just need to add your own .wav files to `src/main/resources/audio/`. See the [Audio System](#-sound-system) section.
-</details>
-
-<details>
-<summary><strong>How do I change the game's speed?</strong></summary>
-Modify `Constants.GRAVITY`, `MAX_DELTA_TIME` in `GameLoop`, or the `speed` parameter passed to `RealTimePlayer` / `PhysicsComponent`.
-</details>
-
-<details>
-<summary><strong>Can I use this project for my thesis or portfolio?</strong></summary>
-Absolutely! The project is MIT-licensed. It's designed as a learning resource for game architecture, JavaFX, and software engineering. We'd love to hear about your work.
-</details>
-
-<details>
-<summary><strong>How do I debug input issues?</strong></summary>
-Key events are logged via `System.out.println` in the original code. Check that your scene has focus and no other UI component is consuming events. The `RealTimeGameScene.handleKeyPressed()` method is the central dispatch point.
-</details>
-
-<details>
-<summary><strong>Why does the game use hardcoded coordinates?</strong></summary>
-All coordinates have been extracted to `Constants.java` for maintainability. The game uses a fixed resolution (1050×530 for real-time, 1024×575 for menus). Responsive scaling is planned.
-</details>
-
-<details>
-<summary><strong>How do I reset my settings?</strong></summary>
-Delete the `~/.gamepoo/` directory. The game will recreate it with defaults on next launch.
-</details>
-
-<details>
-<summary><strong>Can I write my own AI?</strong></summary>
-Yes! Implement the `AIStrategy` interface (planned) and plug it into `TurnBasedGameScene`. The architecture supports swapping AI behaviors via the Strategy pattern.
-</details>
-
-<details>
-<summary><strong>How do I build a distributable package?</strong></summary>
-Run `./linux/build_lin.sh` (Linux) or `windows\build_win.bat` (Windows) to create a native app image with bundled Java and JavaFX. For other platforms, use `jpackage` directly or distribute the executable JAR.
-</details>
-
-<details>
-<summary><strong>Where can I report bugs?</strong></summary>
-Open an issue on GitHub with the `bug` label. Include your OS, Java version, and steps to reproduce.
-</details>
-
-<details>
-<summary><strong>Is there a Discord or community?</strong></summary>
-Not yet. If there's enough interest, we'll set up a community server. Watch the repository for announcements.
-</details>
 
 ---
 
@@ -1228,38 +1022,6 @@ SOFTWARE.
 ## Changelog
 
 See [GitHub Releases](https://github.com/your-username/gamepoo/releases) for the full changelog.
-
-### Latest Release
-
-```
-v1.0.0 — Initial Release
-- Two game modes: Turn-Based and Real-Time
-- 3 characters with unique abilities
-- Component-based entity architecture
-- Fixed-timestep game loop
-- Asset caching and event bus
-- Audio and save systems
-- JUnit 5 test suite
-- Maven build with automatic JavaFX
-```
-
----
-
-## Contributors
-
-<a href="https://github.com/your-username/gamepoo/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=your-username/gamepoo" alt="Contributors" />
-</a>
-
-*Contributors image will appear once the repository is public. Replace `your-username` with your GitHub username.*
-
----
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=your-username/gamepoo&type=Date)](https://star-history.com/#your-username/gamepoo&Date)
-
-*Star history chart will appear once the repository has stars. Replace `your-username` with your GitHub username.*
 
 ---
 
